@@ -22,7 +22,11 @@ def send_briefing(briefing: dict):
     msg["To"] = RECIPIENT_EMAIL
     
     msg.attach(MIMEText(html_content, "html"))
-    
+    docs_path = os.path.join(os.path.dirname(__file__), "../docs/index.html")
+    with open(docs_path, "w") as f:
+        f.write(html_content)
+        
+    print("  Briefing saved to docs/index.html")
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
         server.login(GMAIL_ADDRESS, GMAIL_APP_PASSWORD)
         server.sendmail(GMAIL_ADDRESS, RECIPIENT_EMAIL, msg.as_string())
