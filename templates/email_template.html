@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="english">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Weekly Industry Briefing — {{ briefing.industry }}</title>
@@ -18,29 +18,32 @@
       Industry Intelligence Agent &nbsp;·&nbsp; {{ briefing.signals_tracked }} signals tracked &nbsp;·&nbsp; 5 companies monitored
     </p>
     <!-- MARKET STATS ROW -->
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(255,255,255,0.1);">
-      <div style="padding:14px 20px;border-right:1px solid rgba(255,255,255,0.1);">
-        <div style="color:#fff;font-size:18px;font-weight:500;line-height:1;margin-bottom:4px;">
-          {{ briefing.market.rcl_change }}
-          <span style="font-size:12px;color:rgba(255,255,255,0.4);">{{ briefing.market.rcl_price }}</span>
-        </div>
-        <div style="color:rgba(255,255,255,0.45);font-size:10px;letter-spacing:0.07em;text-transform:uppercase;">RCL This Week</div>
-      </div>
-      <div style="padding:14px 20px;border-right:1px solid rgba(255,255,255,0.1);">
-        <div style="color:#fff;font-size:18px;font-weight:500;line-height:1;margin-bottom:4px;">
-          {{ briefing.market.sp500_change }}
-        </div>
-        <div style="color:rgba(255,255,255,0.45);font-size:10px;letter-spacing:0.07em;text-transform:uppercase;">S&amp;P 500 This Week</div>
-      </div>
-      <div style="padding:14px 20px;">
-        <div style="color:#fff;font-size:18px;font-weight:500;line-height:1;margin-bottom:4px;">
-          {{ briefing.market.crude_change }}
-          <span style="font-size:12px;color:rgba(255,255,255,0.4);">{{ briefing.market.crude_price }}</span>
-        </div>
-        <div style="color:rgba(255,255,255,0.45);font-size:10px;letter-spacing:0.07em;text-transform:uppercase;">Crude Oil This Week</div>
-      </div>
-    </div>
+    <table width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid rgba(255,255,255,0.1);">
+      <tr>
+        <td width="33%" style="padding:14px 20px;border-right:1px solid rgba(255,255,255,0.1);">
+          <div style="color:#fff;font-size:18px;font-weight:500;line-height:1;margin-bottom:4px;">
+            {{ briefing.market.rcl_change }}
+            <span style="font-size:12px;color:rgba(255,255,255,0.4);">{{ briefing.market.rcl_price }}</span>
+          </div>
+          <div style="color:rgba(255,255,255,0.45);font-size:10px;letter-spacing:0.07em;text-transform:uppercase;">RCL This Week</div>
+        </td>
+        <td width="33%" style="padding:14px 20px;border-right:1px solid rgba(255,255,255,0.1);">
+          <div style="color:#fff;font-size:18px;font-weight:500;line-height:1;margin-bottom:4px;">
+            {{ briefing.market.sp500_change }}
+          </div>
+          <div style="color:rgba(255,255,255,0.45);font-size:10px;letter-spacing:0.07em;text-transform:uppercase;">S&amp;P 500 This Week</div>
+        </td>
+        <td width="33%" style="padding:14px 20px;">
+          <div style="color:#fff;font-size:18px;font-weight:500;line-height:1;margin-bottom:4px;">
+            {{ briefing.market.crude_change }}
+            <span style="font-size:12px;color:rgba(255,255,255,0.4);">{{ briefing.market.crude_price }}</span>
+          </div>
+          <div style="color:rgba(255,255,255,0.45);font-size:10px;letter-spacing:0.07em;text-transform:uppercase;">Crude Oil This Week</div>
+        </td>
+      </tr>
+    </table>
   </div>
+  <!-- END HEADER -->
 
   <!-- ACCENT BAR -->
   <div style="height:3px;background:{{ briefing.accent_color | default('#0077C8') }};"></div>
@@ -49,9 +52,9 @@
   <div style="padding:28px 36px;">
 
     <!-- EXECUTIVE SUMMARY -->
-    <div style="margin-bottom:8px;">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
-        <table cellpadding="0" cellspacing="0" style="display:inline-table;"><tr><td style="width:22px;height:22px;border-radius:5px;background:#e8f0fe;font-size:12px;text-align:center;line-height:22px;">📋</td></tr></table>        <span style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#185FA5;">Executive Summary</span>
+    <div style="margin-bottom:24px;">
+      <div style="margin-bottom:12px;">
+        <span style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#185FA5;">Executive Summary</span>
       </div>
       <ul style="list-style:none;padding:0;margin:0;">
         {% for bullet in briefing.executive_summary %}
@@ -64,10 +67,10 @@
     </div>
 
     <!-- FOUR CARDS -->
-    <table style="width:100%;border-collapse:separate;border-spacing:8px;margin-bottom:8px;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:8px;">
       <tr>
-        <td style="width:50%;background:#f8faff;border-radius:10px;padding:16px;border:1px solid #dbeeff;vertical-align:top;">
-          <div style="font-size:10px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:#185FA5;margin-bottom:10px;">📡 &nbsp;Industry Pulse</div>
+        <td width="49%" style="background:#f8faff;border-radius:10px;padding:16px;border:1px solid #dbeeff;vertical-align:top;">
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:#185FA5;margin-bottom:10px;">Industry Pulse</div>
           <ul style="list-style:none;padding:0;margin:0;">
             {% for item in briefing.industry_pulse %}
             <li style="font-size:12px;color:#444;line-height:1.55;padding:5px 0 5px 12px;border-bottom:1px solid #f0f4f8;position:relative;">
@@ -76,8 +79,9 @@
             {% endfor %}
           </ul>
         </td>
-        <td style="width:50%;background:#fff8f5;border-radius:10px;padding:16px;border:1px solid #fde8d8;vertical-align:top;">
-          <div style="font-size:10px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:#c0530a;margin-bottom:10px;">🔭 &nbsp;Competitive Signals</div>
+        <td width="2%"></td>
+        <td width="49%" style="background:#fff8f5;border-radius:10px;padding:16px;border:1px solid #fde8d8;vertical-align:top;">
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:#c0530a;margin-bottom:10px;">Competitive Signals</div>
           <ul style="list-style:none;padding:0;margin:0;">
             {% for item in briefing.competitive_signals %}
             <li style="font-size:12px;color:#444;line-height:1.55;padding:5px 0 5px 12px;border-bottom:1px solid #fdf0e8;position:relative;">
@@ -87,9 +91,10 @@
           </ul>
         </td>
       </tr>
+      <tr><td colspan="3" style="height:8px;"></td></tr>
       <tr>
-        <td style="width:50%;background:#fffdf0;border-radius:10px;padding:16px;border:1px solid #fef3d0;vertical-align:top;">
-          <div style="font-size:10px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:#9a6700;margin-bottom:10px;">🌐 &nbsp;Macro Forces</div>
+        <td width="49%" style="background:#fffdf0;border-radius:10px;padding:16px;border:1px solid #fef3d0;vertical-align:top;">
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:#9a6700;margin-bottom:10px;">Macro Forces</div>
           <ul style="list-style:none;padding:0;margin:0;">
             {% for item in briefing.macro_forces %}
             <li style="font-size:12px;color:#444;line-height:1.55;padding:5px 0 5px 12px;border-bottom:1px solid #fdf8e0;position:relative;">
@@ -98,8 +103,9 @@
             {% endfor %}
           </ul>
         </td>
-        <td style="width:50%;background:#f5fff8;border-radius:10px;padding:16px;border:1px solid #d6f0e0;vertical-align:top;">
-          <div style="font-size:10px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:#1a7a40;margin-bottom:10px;">💼 &nbsp;BD Opportunities</div>
+        <td width="2%"></td>
+        <td width="49%" style="background:#f5fff8;border-radius:10px;padding:16px;border:1px solid #d6f0e0;vertical-align:top;">
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:#1a7a40;margin-bottom:10px;">BD Opportunities</div>
           <ul style="list-style:none;padding:0;margin:0;">
             {% for item in briefing.bd_opportunities %}
             <li style="font-size:12px;color:#444;line-height:1.55;padding:5px 0 5px 12px;border-bottom:1px solid #e8f8ee;position:relative;">
@@ -110,13 +116,21 @@
         </td>
       </tr>
     </table>
+
   </div>
+  <!-- END BODY -->
 
   <!-- FOOTER -->
-  <div style="border-top:1px solid #f0f2f5;padding:14px 36px;display:flex;justify-content:space-between;align-items:center;background:#fafbfc;">
-    <span style="font-size:11px;color:#bbb;">&#9679; &nbsp;Industry Intelligence Agent · Auto-generated</span>
-    <span style="font-size:11px;color:#bbb;">Next briefing: {{ briefing.next_briefing }}</span>
-  </div>
+  <table width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #f0f2f5;background:#fafbfc;">
+    <tr>
+      <td style="padding:14px 36px;">
+        <span style="font-size:11px;color:#bbb;">Industry Intelligence Agent · Auto-generated</span>
+      </td>
+      <td style="padding:14px 36px;text-align:right;">
+        <span style="font-size:11px;color:#bbb;">Next briefing: {{ briefing.next_briefing }}</span>
+      </td>
+    </tr>
+  </table>
 
 </div>
 </body>
