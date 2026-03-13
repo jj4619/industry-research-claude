@@ -1,0 +1,28 @@
+industries:
+  - name: "Cruise Industry"
+    keywords:
+      - "cruise industry news"
+      - "cruise line earnings"
+      - "cruise travel demand trends"
+      - "cruise port expansion"
+      - "cruise industry regulation"
+      - "cruise sustainability decarbonization"
+      - "cruise passenger growth"
+    companies:
+      - "Royal Caribbean"
+      - "Carnival Corporation"
+      - "Norwegian Cruise Line"
+      - "MSC Cruises"
+      - "Virgin Voyages"
+    topics:
+      - "newbuild orders and fleet expansion"
+      - "onboard revenue and yield management"
+      - "private destination development"
+      - "cruise line loyalty programs"
+      - "port congestion and itinerary changes"
+      - "travel agent distribution shifts"
+    regions:
+      - "Caribbean"
+      - "Mediterranean"
+      - "Alaska"
+      - "Asia Pacific"

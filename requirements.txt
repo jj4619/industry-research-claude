@@ -1,0 +1,8 @@
+anthropic
+pyyaml
+python-dotenv
+requests
+beautifulsoup4
+schedule
+secure-smtplib
+jinja2
