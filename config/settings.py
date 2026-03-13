@@ -13,7 +13,7 @@ NEWS_API_KEY = os.getenv("NEWS_API_KEY")
 
 # Model config
 MODEL = "claude-sonnet-4-6"
-MAX_TOKENS = 4096
+MAX_TOKENS = 8192
 
 # Schedule
 SEND_DAY = "monday"

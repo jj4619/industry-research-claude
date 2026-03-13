@@ -81,12 +81,16 @@ def search_rss(query: str) -> list[dict]:
             if not formatted_date:
                 continue
                 
+            link = item.findtext("link", "")
+            # Skip Google's encoded redirect URLs - they break JSON
+            if "news.google.com/rss/articles" in link:
+                link = ""
             results.append({
                 "title": title,
                 "snippet": snippet,
                 "source": source,
                 "date": formatted_date,
-                "url": ""
+                "url": link
             })
         
         return results

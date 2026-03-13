@@ -14,7 +14,7 @@ def synthesize_briefing(research: list[dict]) -> dict:
     for industry in research:
         research_text += f"\n\nINDUSTRY: {industry['industry']}\n"
         for i, finding in enumerate(industry["findings"][:20]):
-            research_text += f"\n[{i+1}] DATE: {finding.get('date', 'Recent')} | SOURCE: {finding.get('source', 'Unknown')}\nHEADLINE: {finding['title']}\nDETAIL: {finding['snippet']}\n"
+            research_text += f"\n[{i+1}] DATE: {finding.get('date', '')} | SOURCE: {finding.get('source', 'Unknown')} | URL: {finding.get('url', '')} \nHEADLINE: {finding['title']}\nDETAIL: {finding['snippet']}\n"
     
     prompt = f"""You are a BCG consultant preparing a weekly industry briefing. Today is {datetime.now().strftime("%B %d, %Y")}.
 
@@ -41,7 +41,11 @@ RAW RESEARCH (as of {datetime.now().strftime("%B %d, %Y")}):
 {research_text}
 
 Return pure JSON only, no markdown. Keys: executive_summary, industry_pulse, competitive_signals, macro_forces, bd_opportunities
-All keys are lists of strings."""
+Each key is a list of objects with two fields: "text" (the bullet string) and "url" (the source URL from the URL field).
+- ALWAYS include the URL from the finding that inspired the bullet
+- If multiple findings inform one bullet, use the URL of the most relevant one
+- Only use "" for url if absolutely no URL exists in any related finding
+No markdown, pure JSON only."""
 
     message = client.messages.create(
         model=MODEL,
@@ -58,6 +62,11 @@ All keys are lists of strings."""
     elif "```" in response_text:
         response_text = response_text.split("```")[1].split("```")[0].strip()
     
-    briefing = json.loads(response_text)
+    try:
+        briefing = json.loads(response_text)
+    except json.JSONDecodeError as e:
+        print(f"JSON parse error: {e}")
+        print(f"Response was: {response_text[-500:]}")
+        raise
     briefing["market"] = get_market_snapshot()
     return briefing
